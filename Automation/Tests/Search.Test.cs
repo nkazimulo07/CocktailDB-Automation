@@ -5,16 +5,18 @@ namespace Automation
 {
     public class Search:BaseTest
 	{
+		private string cocktailName = "Old Fashioned";
+		private string ingredientName = "Vodka";
 		[Test]
 		public void GivenExistingIngredientName_WhenSeaching_ThenReturnsIngredient()
 		{
 			CockTailDB.homePage.searchBox.Click();
-			CockTailDB.homePage.searchBox.SendKeys("Vodka");
+			CockTailDB.homePage.searchBox.SendKeys(ingredientName);
 			CockTailDB.homePage.searchButton.Click();
 			Assert.IsTrue(CockTailDB.homePage.cocktail.Displayed);
 
 			CockTailDB.homePage.cocktail.Click();
-			Assert.IsTrue(CockTailDB.homePage.cocktailName.Text.Equals("Vodka"));
+			Assert.IsTrue(CockTailDB.homePage.cocktailName.Text.Equals(ingredientName));
 			Assert.IsTrue(CockTailDB.homePage.ingredientLabel.Text.Equals("Drinks"));
 		}
 
@@ -22,12 +24,12 @@ namespace Automation
 		public void GivenExistingCocktailName_WhenSeaching_ThenReturnsCocktail()
 		{
 			CockTailDB.homePage.searchBox.Click();
-			CockTailDB.homePage.searchBox.SendKeys("Old Fashioned");
+			CockTailDB.homePage.searchBox.SendKeys(cocktailName);
 			CockTailDB.homePage.searchButton.Click();
 			Assert.IsTrue(CockTailDB.homePage.cocktail.Displayed);
 
 			CockTailDB.homePage.cocktail.Click();
-			Assert.IsTrue(CockTailDB.homePage.cocktailName.Text.Equals("Old Fashioned"));
+			Assert.IsTrue(CockTailDB.homePage.cocktailName.Text.Equals(cocktailName));
 			Assert.IsTrue(CockTailDB.homePage.ingredientLabel.Text.Equals("Ingredients"));
 		}
 
